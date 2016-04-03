@@ -30,7 +30,8 @@ class Inventory(object):
         print json.dumps(self.inventory);
 
     def get_inventory(self):
-        group_name = os.environ.get('RD_NODE_NAME','group')
+        group_name = os.environ.get('RD_JOB_NAME','group').replace('setup-','').replace(' ','')
+        hostname = os.environ.get('RD_NODE_NAME').replace(' ',''),replace('_','-').lower()
         ip = os.environ.get('RD_NODE_IP')
         ssh_user = os.environ.get('RD_NODE_USERNAME','ubuntu')
         ssh_private_key_file = os.environ.get('RD_PRIVATE_KEY_NAME',None)
@@ -43,7 +44,9 @@ class Inventory(object):
             },
             '_meta': {
                 'hostvars': {
-                    ip : {},
+                    ip : {
+                        'hostname' : hostname,
+                    },
                 }
             }
         }
