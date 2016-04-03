@@ -1,0 +1,1 @@
+docker run -i --rm -e RD_JOB_NAME="$RD_JOB_NAME" -e RD_NODE_NAME="$RD_NODE_NAME" -e RD_NODE_IP="$RD_NODE_PRIVATEIPADDRESS" -e RD_PRIVATE_KEY_FILE="<filepath>" <docker image> <cmd>
